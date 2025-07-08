@@ -30,6 +30,7 @@ black = "^25.1.0"
 ruff = "^0.12.2"
 mypy = "^1.16.1"
 pytest = "^8.4.1"
+pytest-cov = "^6.0.0"
 httpx = "^0.28.1"
 pytest-asyncio = "^1.0.0"
 
@@ -110,10 +111,37 @@ addopts = [
     "--strict-config",
     "--verbose",
     "--asyncio-mode=auto",
+    "--cov=app",
+    "--cov-report=term-missing",
+    "--cov-report=html",
 ]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
     "asyncio: marks tests as async tests",
 ]
+
+[tool.coverage.run]
+source = ["app"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/migrations/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+fail_under = 80
 
