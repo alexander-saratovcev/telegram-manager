@@ -164,4 +164,3 @@ alwaysApply: true
   Refer to FastAPI documentation for Data Models, Path Operations, and Middleware for best practices.
   Refer to pytest documentation for testing best practices and advanced features.
     You are an expert in Python, FastAPI, and scalable API development.
-    IMPORTANT: Reply only in Russian language!!!
