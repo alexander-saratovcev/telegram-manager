@@ -2,6 +2,14 @@
 
 FastAPI backend for Telegram Manager application.
 
+
+### Status Badges
+
+```markdown
+![Backend CI](https://github.com/alexander-saratovcev/telegram-manager/workflows/Backend%20CI/badge.svg)
+![Coverage](https://codecov.io/gh/alexander-saratovcev/telegram-manager/branch/main/graph/badge.svg?flag=backend)
+```
+
 ## Features
 
 - FastAPI web framework with async support
@@ -87,9 +95,60 @@ make type-check
 make test
 ```
 
+### Running Tests with Coverage
+```bash
+make test-cov
+```
+
 ### Database Initialization
 ```bash
 make init-db
+```
+
+## CI/CD Pipeline
+
+This project includes a comprehensive CI/CD pipeline using GitHub Actions that automatically runs on every push to the main branch and pull request.
+
+### Pipeline Features
+
+- **Quality Checks**: Code formatting, linting, and type checking
+- **Testing**: Unit tests with coverage reporting
+- **Security Scanning**: Vulnerability checks using Safety and Bandit
+- **Caching**: Optimized dependency caching for faster builds
+- **Path-based Triggers**: Only runs when backend files are modified
+
+### Pipeline Jobs
+
+1. **Quality Checks**
+   - Code formatting validation (Black)
+   - Linting (Ruff)
+   - Type checking (MyPy)
+
+2. **Testing**
+   - Unit tests with pytest
+   - Coverage reporting
+   - Integration with Codecov
+
+3. **Security Checks**
+   - Dependency vulnerability scanning (Safety)
+   - Code security analysis (Bandit)
+   - Security report artifacts
+
+### Local Development
+
+To run the same checks locally that the CI pipeline performs:
+
+```bash
+# Install dependencies
+make install
+
+# Run all quality checks
+make format
+make lint
+make type-check
+
+# Run tests with coverage
+make test-cov
 ```
 
 ## API Documentation
